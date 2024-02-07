@@ -1,0 +1,47 @@
+@tailwind base;
+@layer base {
+    img {
+      @apply inline-block;
+    }
+  }
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a {
+        @apply underline transition
+    }
+
+    button {
+        @apply bg-black text-white py-2 px-10 border border-black
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+        color: #E7E5E4;
+    }
+
+    [type="checkbox"]:focus,
+    [type="radio"]:focus {
+        --tw-ring-color: #E7E5E4;
+    }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.inset-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
