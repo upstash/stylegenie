@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 const store = create((set, get) => ({
-  imageUrl: "http://localhost:8080/image",
-  queryUrl: "http://localhost:8080/query",
+  imageUrl: "https://stylegenie.fly.dev/image",
+  queryUrl: "https://stylegenie.fly.dev/query",
 
   mainPrompt: "",
   setMainPrompt: (mainPrompt) => set(() => ({ mainPrompt })),

@@ -29,7 +29,7 @@ Note: The demo supports 10 requests per day. If you would like to test the syste
 
 ## Architecture
 
-![Structure](https://github.com/upstash/stylegenie/blob/main/architecture.png)
+![Structure](https://github.com/upstash/stylegenie/blob/master/architecture.png)
 
 ## How it Works
 
