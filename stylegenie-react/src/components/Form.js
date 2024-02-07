@@ -14,6 +14,7 @@ export default function Form() {
     setReviseList,
     fetchData,
     reviseCount,
+    mainPrompt,
   } = store();
 
   const handlePromptChange = (event) => {
@@ -105,11 +106,31 @@ export default function Form() {
           />
         </div>
 
-        {reviseList && (
+        {resp && (
           <div className="mx-auto flex max-w-sm flex-wrap items-center justify-center">
+            <div className="m-1 flex items-center justify-center rounded-full border bg-stone-800  px-2 py-1 font-medium text-white hover:bg-stone-600">
+              <div className="max-w-full flex-initial text-xs font-normal leading-none">
+                {mainPrompt}
+              </div>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-x ml-2 h-4 w-4 rounded"
+                >
+                  <path d="M21 13v10h-6v-6h-6v6h-6v-10h-3l12-12 12 12h-3zm-1-5.907v-5.093h-3v2.093l3 3z" />
+                </svg>
+              </div>
+            </div>
             {reviseList.map((prompt, index) => (
               <div
-                className={`m-1 flex items-center justify-center rounded-full border bg-stone-800  px-2 py-1 font-medium text-white hover:bg-stone-600`}
+                className={`m-1 flex items-center justify-center rounded-full border bg-stone-800  px-2 py-1 font-medium text-stone-100 hover:bg-stone-600`}
               >
                 <div className="max-w-full flex-initial text-xs font-normal leading-none">
                   {prompt}

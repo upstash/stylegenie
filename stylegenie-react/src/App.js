@@ -14,8 +14,7 @@ function App() {
     <main className="mx-auto flex h-screen max-w-6xl flex-col bg-stone-100 px-10 pt-20 text-center">
       {!queryResp && (
         <h1 className="mx-auto w-8/12 bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-2xl font-bold text-transparent">
-          Describe the clothing you want, including the occasion, style, colors,
-          patterns, specific garments, and any preferred materials or features.
+          {resp ? "Continue styling adding new instructions or if it looks perfect click on Find Store" : "Describe the clothing you want, including the occasion, style, colors, patterns, specific garments, and any preferred materials or features."}
         </h1>
       )}
 
