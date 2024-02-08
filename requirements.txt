@@ -1,11 +1,11 @@
 upstash_vector==0.2.0
-Pillow==10.1.0
+Pillow==10.2.0
 torch==2.1.2
 transformers==4.36.2
 torchvision==0.16.2
 numpy==1.26.2
-slowapi==0.1.8
+slowapi==0.1.9
 openai==1.10.0
 uvicorn==0.25.0
-fastapi==0.105.0
+fastapi==0.109.2
 typing==3.7.4.3

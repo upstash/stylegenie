@@ -7,6 +7,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi.util import get_remote_address
+from transformers import CLIPModel
 import upstash_vector as uv
 from openai import OpenAI
 
@@ -19,7 +20,7 @@ if not (upstash_url and upstash_token and openai_key):
 
 index = uv.Index(url=upstash_url, token=upstash_token)
 client = OpenAI(api_key=openai_key)
-
+model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
@@ -70,7 +71,7 @@ async def query(result: models.ResultReq , request: Request):
         raise HTTPException(status_code=400, detail="Image URL is required.")    
             
     try:
-        embedding = image_controller.transform_image(result.image_url)
+        embedding = image_controller.transform_image(model, result.image_url)
     except:
         raise HTTPException(status_code=400, detail="Error transform image embedding.")
     

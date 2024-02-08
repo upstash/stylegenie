@@ -1,7 +1,6 @@
 from io import BytesIO
 from PIL import Image
 from torchvision import transforms
-from transformers import CLIPModel
 import numpy as np
 import requests
 import torch
@@ -30,7 +29,7 @@ def generate_product_image(client, prompt):
         
     return response.data[0].url
 
-def transform_image(image_url):
+def transform_image(model, image_url):
     """
     Preprocesses an image and returns its embedding using the provided CLIP model and preprocessing transforms.
     
@@ -42,7 +41,6 @@ def transform_image(image_url):
     Returns:
     - np.array: The image embedding as a numpy array.
     """
-    model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
     
     preprocess = transforms.Compose([
             transforms.Resize((224, 224)),
