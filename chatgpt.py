@@ -1,4 +1,4 @@
-is_valid_system_prompt = 'People will give a description of a cloth they want. I want your returned results to be only 2 types. 1: True 2: False . For True you should accept input prompts like: Thick woolen sweater in burgundy for a cozy winter, Red dress, Blue dress for to wear in wedding, Brown cargo pants, Plush black coat with leather details. For other non-relevant fashion product prompts return "False".'
+is_valid_system_prompt = 'People will give a description of a cloth they want. I want your returned results to be only 2 types. 1: True 2: False . For True you should accept input prompts like: Thick woolen sweater in burgundy for a cozy winter, Red dress, Sweater, Suit, Blue dress for to wear in wedding, Brown cargo pants, Plush black coat with leather details. For other non-relevant fashion product prompts return "False".'
 merge_system_prompt = 'I want you to give a final prompt from the list into one Dall-E prompt. The list is prompt history so last prompt is the most recent.'
 
 def is_valid_prompt(client, prompt):

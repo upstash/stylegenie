@@ -10,7 +10,7 @@ export default function Result() {
         <img loading="lazy" className="rounded-3xl w-5/6 p-5" src={resp.image_url} alt="product" />
         <div className="px-5 pb-5">
           <button
-            className="animate-pulse w-full rounded-full bg-stone-800 px-5 py-2 font-bold text-white hover:bg-stone-600"
+            className={`${loading ? "cursor-wait" : "cursor-pointer animate-pulse"} w-full rounded-full bg-stone-800 px-5 py-2 font-bold text-white hover:bg-stone-600`}
             disabled={loading}
             onClick={(e) => {
               e.preventDefault();

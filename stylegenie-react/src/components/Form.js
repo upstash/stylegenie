@@ -27,6 +27,9 @@ export default function Form() {
 
   const handleRemovePrompt = (index) => {
     return () => {
+      if (loading) {
+        return;
+      }
       if (reviseCount >= 11) {
         setPrompt("");
         alert("You can only revise 5 times");
@@ -138,7 +141,7 @@ export default function Form() {
                 <div
                   className={`flex flex-auto flex-row-reverse ${
                     loading || reviseCount >= 11
-                      ? "cursor-no-drop"
+                      ? "cursor-wait"
                       : "cursor-pointer"
                   }`}
                   onClick={handleRemovePrompt(index)}
