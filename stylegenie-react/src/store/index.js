@@ -4,6 +4,11 @@ const store = create((set, get) => ({
   imageUrl: "https://stylegenie.fly.dev/image",
   queryUrl: "https://stylegenie.fly.dev/query",
 
+
+  file: null,
+  setFile: (file) => set(() => ({ file })),
+  aiSupport: false,
+  setAiSupport: (aiSupport) => set(() => ({ aiSupport })),
   mainPrompt: "",
   setMainPrompt: (mainPrompt) => set(() => ({ mainPrompt })),
   resp: null,
@@ -95,23 +100,26 @@ const store = create((set, get) => ({
   },
 
   fetchQueryData: async () => {
-    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt} = get();
+    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt, file} = get();
 
-    if (!resp) return;
+    if (!resp && !file) return;
 
     try {
       setLoading(true);
 
-      let payload = {
-        image_url: resp.image_url,
-      };
+      console.log("fetchQueryData", resp);
+
+      let formdata = new FormData();
+      if (file){
+        formdata.append("file", file, file.name);
+      }else {
+        formdata.append("image_url", resp.image_url);
+      }
 
       const res = await fetch(queryUrl, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
       });
       const data = await res.json();
 

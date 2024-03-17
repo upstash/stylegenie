@@ -1,8 +1,5 @@
 from pydantic import BaseModel
 from typing import List, Optional
-
-class ResultReq(BaseModel):
-    image_url: str
     
 class ImageReq(BaseModel):
     prompt: str

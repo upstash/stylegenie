@@ -29,7 +29,7 @@ def generate_product_image(client, prompt):
         
     return response.data[0].url
 
-def transform_image(model, image_url):
+def transform_image(model, img, isFile):
     """
     Preprocesses an image and returns its embedding using the provided CLIP model and preprocessing transforms.
     
@@ -49,9 +49,14 @@ def transform_image(model, image_url):
         ])
     
     headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"}
-    image_response = requests.get(image_url, headers=headers)
-    image_response.raise_for_status()
-    image = Image.open(BytesIO(image_response.content))
+    
+    if not isFile:
+        image_response = requests.get(img, headers=headers)
+        image_response.raise_for_status()
+        image = Image.open(BytesIO(image_response.content))
+    else:
+        image = Image.open(img.file)
+    
     query_embedding = preprocess(image).unsqueeze(0)
     with torch.no_grad():
         features = model.get_image_features(pixel_values=query_embedding)
