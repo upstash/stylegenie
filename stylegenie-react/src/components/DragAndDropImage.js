@@ -6,9 +6,16 @@ export default function DragAndDropImage() {
   const { setFile } = store();
 
   const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'image/*': ['.jpg', '.jpeg', '.jpe', '.jfif', '.png', '.bmp', '.webp']
+    },
+    maxSize: 2621440,
     maxFiles: 1, 
     onDropAccepted: (files) => {
       setFile(files[0]);
+    },
+    onDropRejected: (error) => {
+      alert(error[0].errors[0].message);
     }
   });
 
