@@ -9,7 +9,7 @@ export default function DragAndDropImage() {
     accept: {
       'image/*': ['.jpg', '.jpeg', '.jpe', '.jfif', '.png', '.bmp', '.webp']
     },
-    maxSize: 2621440,
+    maxSize: 5242880,
     maxFiles: 1, 
     onDropAccepted: (files) => {
       setFile(files[0]);
