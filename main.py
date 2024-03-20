@@ -71,13 +71,16 @@ async def query(request: Request, file: Optional[UploadFile] = File(None)):
     
     form = await request.form()
     
+    gender = form.get("gender")
+    
     if not (file):
-        #get image_url from form data
         image_url = form.get("image_url")
         if not image_url:
             raise HTTPException(status_code=400, detail="Image URL or file is required.")
             
     if file:
+        if file.size > 5242880:
+            raise HTTPException(status_code=400, detail="File size too large. Max 5MB.")
         try:
             embedding = image_controller.transform_image(model, file, True)
         except:
@@ -89,11 +92,16 @@ async def query(request: Request, file: Optional[UploadFile] = File(None)):
             raise HTTPException(status_code=400, detail="Error transform image embedding.")
     
     try:
+        gf = ""
+        if gender:
+            gf = f"gender = '{gender}'"
+        
         res = index.query(
         vector=embedding, 
         top_k=6, 
         include_metadata=True, 
         include_vectors=False,
+        filter=gf
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error querying index: {e}")

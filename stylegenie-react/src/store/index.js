@@ -4,7 +4,8 @@ const store = create((set, get) => ({
   imageUrl: "https://stylegenie.fly.dev/image",
   queryUrl: "https://stylegenie.fly.dev/query",
 
-
+  genderFilter: "male",
+  setGenderFilter: (genderFilter) => set(() => ({ genderFilter })),
   file: null,
   setFile: (file) => set(() => ({ file })),
   aiSupport: false,
@@ -100,20 +101,21 @@ const store = create((set, get) => ({
   },
 
   fetchQueryData: async () => {
-    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt, file} = get();
+    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt, file, genderFilter} = get();
 
     if (!resp && !file) return;
 
     try {
       setLoading(true);
 
-      console.log("fetchQueryData", resp);
-
       let formdata = new FormData();
       if (file){
         formdata.append("file", file, file.name);
       }else {
         formdata.append("image_url", resp.image_url);
+      }
+      if (genderFilter && genderFilter !== ""){
+        formdata.append("gender", genderFilter);
       }
 
       const res = await fetch(queryUrl, {
