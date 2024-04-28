@@ -1,4 +1,4 @@
-# StyleGenie: Fashion Image Generator and Search Engine
+# StyleGenie: Product Search Engine and Fashion Image Generator
 
 Welcome to our fashion image generator and search engine project. This fascinating project effectively combines the power of [Upstash Vector](https://upstash.com/vector) and Dall-E, index and search images from more than 10 online retail stores, such as Nike, Calvin Klein, and Prada.
 
@@ -6,7 +6,12 @@ Welcome to our fashion image generator and search engine project. This fascinati
 
 https://stylegenie.vercel.app
 
-Note: The demo supports 10 requests per day. If you would like to test the system more than 10 times, please contact me.
+Note: The demo supports 20 requests per day. If you would like to test the system more than 20 times, please contact me.
+
+> [!NOTE]  
+> **This project is a Community Project.**
+>
+> The project is maintained and supported by the community. Upstash may contribute but does not officially support or assume responsibility for it.
 
 ## Features
 
@@ -33,7 +38,7 @@ Note: The demo supports 10 requests per day. If you would like to test the syste
 
 ## How it Works
 
-Enter a product description and the system employs DALL-E model to generate high-quality images of the described product. When a query is received with the generated image, the system efficiently retrieves the relevant images from the index. Along with the product links are provided to guide users directly to the online retail shops where the items can be purchased.
+Upload an image of a product you like or enter a product description and the system employs DALL-E model to generate high-quality images of the described product. When a query is received with the generated image, the system efficiently retrieves the relevant images from the index. Along with the product links are provided to guide users directly to the online retail shops where the items can be purchased.
 
 ## Project Setup and Deployment
 

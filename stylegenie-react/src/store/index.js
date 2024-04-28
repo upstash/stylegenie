@@ -4,7 +4,7 @@ const store = create((set, get) => ({
   imageUrl: "https://stylegenie.fly.dev/image",
   queryUrl: "https://stylegenie.fly.dev/query",
 
-  genderFilter: "male",
+  genderFilter: "woman",
   setGenderFilter: (genderFilter) => set(() => ({ genderFilter })),
   file: null,
   setFile: (file) => set(() => ({ file })),

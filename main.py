@@ -50,7 +50,7 @@ async def image(image: models.ImageReq, request: Request):
         image.revise_list.insert(0, image.prompt)
         image.prompt = chatgpt.merge_prompts(client, image.revise_list)
     
-    base_prompt = f"a product photo of a cloth, featuring clean lines and styling. Description: {image.prompt} for {image.gender}. Plain white background. Single product."
+    base_prompt = f"a product photo of a clothing, featuring clean lines and styling. Description: {image.prompt} for {image.gender}. Plain white background. Single product."
     base_prompt_with_model = f"{image.prompt}, product for gender {image.gender}, fashion model wearing it and showing full body of model with a white background."
     
     if image.with_model:
