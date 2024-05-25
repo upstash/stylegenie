@@ -8,6 +8,7 @@ import QueryResult from "./components/QueryResult";
 import FloatingBackButton from "./components/FloatingBackButton";
 import DragAndDropImage from "./components/DragAndDropImage";
 import Footer from "./components/Footer";
+import Examples from "./components/Examples";
 
 function App() {
   const { resp, queryResp, aiSupport, setAiSupport, file } = store();
@@ -44,7 +45,9 @@ function App() {
 
       {queryResp && <QueryResult />}
 
-      <FloatingBackButton />
+      {!queryResp && <Examples />}
+
+      {queryResp && <FloatingBackButton />}
 
       <Analytics />
 

@@ -23,7 +23,7 @@ index = uv.Index(url=upstash_url, token=upstash_token)
 client = OpenAI(api_key=openai_key)
 model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 
-limiter = Limiter(key_func=get_remote_address)
+limiter = Limiter(key_func=get_remote_address, default_limits=["200 per day"])
 app = FastAPI()
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -50,7 +50,7 @@ async def image(image: models.ImageReq, request: Request):
         image.revise_list.insert(0, image.prompt)
         image.prompt = chatgpt.merge_prompts(client, image.revise_list)
     
-    base_prompt = f"a product photo of a clothing, featuring clean lines and styling. Description: {image.prompt} for {image.gender}. Plain white background. Single product."
+    base_prompt = f"a product photo of a cloth, featuring clean lines and styling. Description: {image.prompt} for {image.gender}. Plain white background. Single product."
     base_prompt_with_model = f"{image.prompt}, product for gender {image.gender}, fashion model wearing it and showing full body of model with a white background."
     
     if image.with_model:
@@ -66,7 +66,7 @@ async def image(image: models.ImageReq, request: Request):
 
 
 @app.post("/query")
-@limiter.limit("20/day")
+@limiter.exempt
 async def query(request: Request, file: Optional[UploadFile] = File(None)):
     
     form = await request.form()

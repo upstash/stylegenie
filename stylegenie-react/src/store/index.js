@@ -4,8 +4,6 @@ const store = create((set, get) => ({
   imageUrl: "https://stylegenie.fly.dev/image",
   queryUrl: "https://stylegenie.fly.dev/query",
 
-  genderFilter: "woman",
-  setGenderFilter: (genderFilter) => set(() => ({ genderFilter })),
   file: null,
   setFile: (file) => set(() => ({ file })),
   aiSupport: false,
@@ -16,8 +14,6 @@ const store = create((set, get) => ({
   setResp: (resp) => set(() => ({ resp })),
   prompt: "",
   setPrompt: (prompt) => set(() => ({ prompt })),
-  gender: "male",
-  setGender: (gender) => set(() => ({ gender })),
   withModel: false,
   setWithModel: (withModel) => set(() => ({ withModel })),
   loading: false,
@@ -39,7 +35,6 @@ const store = create((set, get) => ({
       resp,
       imageUrl,
       prompt,
-      gender,
       withModel,
       reviseList,
       reviseCount,
@@ -64,7 +59,6 @@ const store = create((set, get) => ({
       }
 
       let payload = {
-        gender: gender,
         prompt: mainPrompt ? mainPrompt : prompt,
         with_model: withModel,
         revise_list: reviseList,
@@ -101,9 +95,9 @@ const store = create((set, get) => ({
   },
 
   fetchQueryData: async () => {
-    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt, file, genderFilter} = get();
+    const { setLoading, setQueryResp, resp, queryUrl, setReviseList, setReviseCount, setPrompt, file} = get();
 
-    if (!resp && !file) return;
+    // if (!resp && !file) return;
 
     try {
       setLoading(true);
@@ -113,9 +107,6 @@ const store = create((set, get) => ({
         formdata.append("file", file, file.name);
       }else {
         formdata.append("image_url", resp.image_url);
-      }
-      if (genderFilter && genderFilter !== ""){
-        formdata.append("gender", genderFilter);
       }
 
       const res = await fetch(queryUrl, {
@@ -140,6 +131,7 @@ const store = create((set, get) => ({
       setReviseCount(0);
       setLoading(false);
     } catch (e) {
+      console.log(e);
       alert("Something went wrong. Please try again later.");
       setLoading(false);
     } finally {

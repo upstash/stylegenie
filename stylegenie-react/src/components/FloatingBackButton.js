@@ -5,7 +5,7 @@ export default function FloatingBackButton() {
   const { setReviseCount, setResp, setQueryResp, setMainPrompt, setPrompt, setAiSupport, setFile } = store();
 
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="fixed bottom-4 right-4 animate-bounce">
         <button
           type="button"
           className="me-2 inline-flex items-center rounded-full border-none p-2.5 text-center text-sm text-white focus:outline-none"

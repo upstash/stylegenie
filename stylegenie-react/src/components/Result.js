@@ -1,22 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import store from "../store";
 import { IconLoader3 } from "@tabler/icons-react";
 
 export default function Result() {
-  const { resp, loading, fetchQueryData, file, setGenderFilter } = store();
-
-  const [gender, setGender] = useState("woman"); 
-
-
-  const handleGenderChange = () => {
-    if (gender === "woman") {
-      setGender("man");
-      setGenderFilter("man"); 
-    } else {
-      setGender("woman")
-      setGenderFilter("woman"); 
-    }
-  };
+  const { resp, loading, fetchQueryData, file } = store();
 
   return (
     <div>
@@ -39,21 +26,10 @@ export default function Result() {
             />
           )}
           <div className="mx-auto justify-center pb-5 relative flex flex-row">
-            <div>
-              <button
-                className="rounded-full border-gray-100 text-xl hover:bg-gray-300 bg-gray-100 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                defaultValue={"woman"}
-                onClick={handleGenderChange}
-                disabled={loading}
-              >
-                {gender === "woman" ? "👩🏻  🔁" : "👨🏻  🔁"}
-              </button>
-            </div>
-
             <div className="ml-3">
             <button
               className={`${
-                loading ? "cursor-wait" : "animate-pulse cursor-pointer"
+                loading ? "cursor-wait" : "cursor-pointer"
               } relative rounded-full bg-stone-800 text-xl px-5 py-2 font-bold text-white hover:bg-stone-600`}
               disabled={loading}
               onClick={(e) => {
