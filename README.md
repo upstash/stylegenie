@@ -1,12 +1,12 @@
-# StyleGenie: Product Search Engine and Fashion Image Generator
+# StyleGenie: Product Search Engine and Image Generator
 
-Welcome to our fashion image generator and search engine project. This fascinating project effectively combines the power of [Upstash Vector](https://upstash.com/vector) and Dall-E, index and search images from more than 10 online retail stores, such as Nike, Calvin Klein, and Prada.
+Welcome to our fashion image generator and search engine project. This project combines [Upstash Vector](https://upstash.com/vector) and Dall-E, index and search images from more than 10 online retail stores, such as Nike, Calvin Klein, and Prada.
 
 ## Demo
 
 https://stylegenie.vercel.app
 
-Note: The demo supports 20 requests per day. If you would like to test the system more than 20 times, please contact me.
+Note: The demo supports 20 requests per day.
 
 > [!NOTE]  
 > **This project is a Community Project.**
@@ -15,11 +15,9 @@ Note: The demo supports 20 requests per day. If you would like to test the syste
 
 ## Features
 
-👗 **Fashion Product Generation**: You can enter a specific item like 'thick woolen sweater in burgundy for a cozy winter' and the system will generate a photorealistic image of the described product. 
+👗 **Fashion Product Generation**: You can enter a specific item like 'thick woolen sweater in burgundy for a cozy winter' and the system will generate a realistic image of the described product. 
 
 🔍 **Product Similarity Search**: We leverage the search capabilities of Upstash Vector to index the images. 
-
-🛒 **Direct Purchase**: The system also provides the product links, leading to a seamless online shopping experience.
 
 👀 **Query Expansion**: The system also supports query expansion. You can revise the generated image and the system will generate a new image based on the revised description.
 
@@ -79,17 +77,13 @@ Upload an image of a product you like or enter a product description and the sys
 }
 ```
 
-## Future Work
-
-StyleGenie is a work in progress. We are planning to add more features and improve the existing ones. Here are some of the features we are planning to add:
+## Possible Future Work
 
 - **Price Field**: This will allow users to see the price of the product in the search results.
 
 - **Filtering**: This will allow users to filter the search results based on the gender, brand, and other attributes.
 
 - **More Stores**: This will allow users to search for products from a wider range of stores.
-
-- **Crawler Improvements**: This will allow us to crawl more fields from the product pages.
 
 - **Crawler Automation**: This will allow us to update the index more frequently.
 
